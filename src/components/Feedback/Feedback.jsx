@@ -1,7 +1,5 @@
-export default function Feedback({ reviews, total }) {
+export default function Feedback({ reviews, total, positive }) {
   const { good, neutral, bad } = reviews;
-
-  const positive = total === 0 ? 0 : Math.round((good / total) * 100);
 
   return (
     <>

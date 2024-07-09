@@ -38,8 +38,9 @@ export default function App() {
   };
 
   const { good, neutral, bad } = reviews;
-
   const totalFeedback = good + neutral + bad;
+  const positiveFeedback =
+    totalFeedback === 0 ? 0 : Math.round((good / totalFeedback) * 100);
 
   return (
     <>
@@ -50,7 +51,11 @@ export default function App() {
         onReset={reset}
       />
       {totalFeedback >= 1 ? (
-        <Feedback reviews={reviews} total={totalFeedback} />
+        <Feedback
+          reviews={reviews}
+          total={totalFeedback}
+          positive={positiveFeedback}
+        />
       ) : (
         <Notification />
       )}
